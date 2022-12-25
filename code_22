@@ -1,0 +1,25 @@
+import java.util.Scanner; 
+public class SumIsPrimeOrNot
+{ 
+ public static void main(String arg[]) 
+ { 
+ long number, sum;
+ Scanner sc=new Scanner(System.in);
+ System.out.print("Enter a Number: ");
+ number=sc.nextLong();
+ for(sum=0; number!=0; number=number/10)
+ sum = sum + number % 10;
+ 
+ boolean flag = false;
+ for(int i = 2; i <= sum/2; ++i)
+ if(sum % i == 0)
+ {
+ flag = true;
+ break;
+ }
+ if (!flag)
+ System.out.println("Sum of digits is a Prime Number.");
+ else
+ System.out.println("Sum of digits is Not a Prime Number.");
+ }
+}
