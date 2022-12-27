@@ -1,0 +1,23 @@
+//OOPS
+class Area {
+  int l;
+  int b;
+ 
+  Area(int l, int b) {
+
+    this.l = l;
+    this.b = b;
+ }
+
+  public void getArea() {
+  int area = l * b;
+   System.out.println("Area: " + area);
+  }
+}
+class Main {
+  public static void main(String[] args) {
+  Area rectangle = new Area(4, 15);
+  rectangle.getArea();
+
+  }
+}
