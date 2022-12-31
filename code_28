@@ -1,0 +1,19 @@
+import java.util.Scanner;
+ 
+class OOPS {
+    int num;
+    String name;
+ 
+    OOPS() { System.out.println("Constructor called "); }
+}
+ 
+class Start {
+    public static void main(String[] args)
+    {
+        OOPS day1 = new OOPS();
+        /* Default constructor used which will give default
+         values to the object like 0, null */
+        System.out.println(day1.name );
+        System.out.println(day1.num);
+    }
+}
