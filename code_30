@@ -1,0 +1,16 @@
+class Pet{  
+void eat(){System.out.println("eating...");}  
+}  
+class Dog extends Pet{  
+void bark(){System.out.println("barking...");}  
+}  
+class Puppy extends Dog{  
+void sleep(){System.out.println("sleeping...");}  
+}  
+class TestInheritance2{  
+public static void main(String args[]){  
+Puppy d=new Puppy();  
+d.sleep();  
+d.bark();  
+d.eat();  
+}}  
