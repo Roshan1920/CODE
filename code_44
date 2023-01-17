@@ -1,31 +1,20 @@
 class Solution {
-    List<List<Integer>> ans=new ArrayList<>();
-    public List<List<Integer>> combinationSum(int[] arr, int sum) {
-        Arrays.sort(arr);
-        helper(arr,sum,0,new ArrayList<>());
-        return ans;
-    }
-    public void helper(int [] arr,int sum,int ind,List<Integer> temp){
-        if(ind==arr.length){
-            return;
+    public List<List<Integer>> subsets(int[] nums) {
+  
+        List<List<Integer>> res = new ArrayList();
+        res.add(new ArrayList());
+
+        for(int num:nums)
+        {
+            int n = res.size();
+            for(int j=0;j<n;j++)
+            {
+                List<Integer> temp = new ArrayList(res.get(j));
+                temp.add(num);
+                res.add(temp);
+            }
         }
-        
-        if(arr[ind]==sum){
-            ArrayList<Integer> temp2=new ArrayList<>();
-            temp2.addAll(temp);
-            temp2.add(arr[ind]);
-            ans.add(temp2);
-            return;
-        }
-        if(arr[ind]>sum){
-            return;
-        }
-        
-        helper(arr,sum,ind+1,temp);
-        
-        ArrayList<Integer> temp2=new ArrayList<>();
-        temp2.addAll(temp);
-        temp2.add(arr[ind]);
-        helper(arr,sum-arr[ind],ind,temp2);
-    }
+        return res;
+    } 
+
 }
