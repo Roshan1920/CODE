@@ -1,0 +1,20 @@
+Input: 
+Employee table:
++----+--------+
+| id | salary |
++----+--------+
+| 1  | 100    |
++----+--------+
+Output: 
++---------------------+
+| SecondHighestSalary |
++---------------------+
+| null                |
++---------------------+
+Solution
+
+# Write your MySQL query statement below
+SELECT
+    MAX(salary) AS SecondHighestSalary
+FROM Employee
+WHERE salary!=(SELECT MAX(salary) FROM Employee);
