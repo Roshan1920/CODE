@@ -1,0 +1,29 @@
+nput: 
+Employees table:
++-------------+---------+------------+-----+
+| employee_id | name    | reports_to | age |
++-------------+---------+------------+-----+
+| 9           | Hercy   | null       | 43  |
+| 6           | Alice   | 9          | 41  |
+| 4           | Bob     | 9          | 36  |
+| 2           | Winston | null       | 37  |
++-------------+---------+------------+-----+
+Output: 
++-------------+-------+---------------+-------------+
+| employee_id | name  | reports_count | average_age |
++-------------+-------+---------------+-------------+
+| 9           | Hercy | 2             | 39          |
++-------------+-------+---------------+-------------+
+
+Solution
+
+SELECT
+e1.reports_to AS employee_id,
+e2.name,
+COUNT(*) AS reports_count,
+ROUND(AVG(e1.age)) AS average_age
+FROM Employees e1
+JOIN Employees e2
+ON e1.reports_to = e2.employee_id
+GROUP BY e1.reports_to
+ORDER BY e1.reports_to;
