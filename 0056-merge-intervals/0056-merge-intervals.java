@@ -1,17 +1,28 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
+        //Sorted all the pairs
+     Arrays.sort(intervals,(a,b) -> Integer.compare(a[0],b[0]));
         
-    List<int[]> ans = new ArrayList<>();
+        List<int[]> res=new ArrayList<>();
+        
+        int low=intervals[0][0];
+        int high=intervals[0][1];
 
-    Arrays.sort(intervals, (a, b) -> (a[0] - b[0]));
-
-    for (int[] interval : intervals)
-      if (ans.isEmpty() || ans.get(ans.size() - 1)[1] < interval[0])
-        ans.add(interval);
-      else
-        ans.get(ans.size() - 1)[1] = Math.max(ans.get(ans.size() - 1)[1], interval[1]);
-
-    return ans.stream().toArray(int[][] ::new);
-     
+        for(int i=1;i<intervals.length;i++)
+        {
+           if(intervals[i][0]<=high){
+//pichle wale ke j se next wale ke i ko compare karo
+               if(high<intervals[i][1])
+//agar value zuada hua naye wale ka to update karo value
+               high=intervals[i][1];
+           }
+           else{
+               res.add(new int[]{low,high});
+               low=intervals[i][0];
+               high=intervals[i][1];
+           }
+        }
+        res.add(new int[]{low,high});  
+       return res.toArray(new int[0][]);    
     }
 }
