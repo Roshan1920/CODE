@@ -99,14 +99,16 @@ class Solution
 {
     //Function to find the data of nth node from the end of a linked list.
     int getNthFromLast(Node head, int n)
-    {
-    	// Your code here	
+    {	
+    	//using two pointers 1st and 2nd to find the difference between the two
+    	// so that when the 1st reaches to null the 2nd will be at nth node from last.
+    	
     	  if(head==null){
             return -1;
         }
         int count=0;
         Node first=head;
-        Node sec=head;
+        Node second=head;
     	while(count<n && first!=null){
     	    first=first.next;
     	    count++;
@@ -116,9 +118,9 @@ class Solution
     	}
     	while(first!=null){
     	    first=first.next;
-    	    sec=sec.next;
+    	    second=second.next;
     	}
-    	return sec.data;
+    	return second.data;
 
     }
 }
