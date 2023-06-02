@@ -79,15 +79,21 @@ class GfG{
           //add code here.
            long num1 = 0 , num2 = 0;
            int mod = 1000000007;
+             
+        //To get the numbers from the list.
+        
           while(l1!=null){
               num1 = (num1*10 + l1.data)%mod;
               l1 = l1.next;
-          }
+        }
+          
+        //For, 3-2-1___3, 3*10+2=32, 32*10 +1= 321
+        
           while(l2!=null){
               num2 = (num2*10 + l2.data)%mod;
               l2 = l2.next;
           }
-         
+        // multply both the numbers we got.
           long ans = (num1*num2)%mod;
           return ans;
 
