@@ -1,27 +1,23 @@
 class Solution {
-    List<List<Integer>> result;
-    public List<List<Integer>> combinationSum(int[] candidates, int target) 
-    {
-        result = new ArrayList<>();
-        Arrays.sort(candidates);
-        combinations(candidates, target, new ArrayList<>(), 0);
-        return result;
+   
+public List<List<Integer>> combinationSum(int[] candidates, int target) {
+         List<List<Integer>> subset = new ArrayList();
+        com(subset,0,candidates,new ArrayList(),target);
+        return subset;
     }
-
-    public void combinations(int[] arr, int target, List<Integer> list, int i) 
-    {
-        if(target == 0) {
-            result.add(new ArrayList<>(list));
-            return;
-        }
-        if(i >= arr.length || arr[i] > target) 
-        {
-            return;
-        }
-
-        list.add(arr[i]);
-        combinations(arr, target - arr[i], list, i );
-        list.remove(list.size() - 1);
-        combinations(arr, target, list, i + 1);
+    
+     void com( List<List<Integer>> subset,int index,int[] candidates,List<Integer> current,int target){
+                
+                if(target<0)return;
+                if(target==0){
+                    subset.add(new ArrayList(current)); 
+                    return;
+                }
+               
+                for(int i=index;i<candidates.length;i++){
+                    current.add(candidates[i]);
+                    com(subset,i,candidates, current,target-candidates[i]);
+                    current.remove(current.size()-1);           
+                } 
     }
 }
