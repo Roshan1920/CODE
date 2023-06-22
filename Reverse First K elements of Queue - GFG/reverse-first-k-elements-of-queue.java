@@ -50,37 +50,31 @@ class ModifyQueue {
 // } Driver Code Ends
 
 
-// User function Template for Java
-
-
-
-// User function Template for Java
 
 class GfG {
-   
     // Function to reverse first k elements of a queue.
     public Queue<Integer> modifyQueue(Queue<Integer> q, int k) {
-        
-         Queue<Integer> q1=new LinkedList<Integer>();
-         
-         for(int i=0;i<k;i++){
-             q1.offer(q.poll());
-         }
-         
-         reverse(q1);
-         while(!q.isEmpty()){
-             q1.add(q.poll());
-         }
-         return q1;
+        if(k <= 0)
+        return q;
+    if(q.size() == 0 || q.size() == 1)
+        return q;
+
+    //12345
+    int n = q.size();
+    Stack<Integer> s = new Stack<>();
+    for(int i=0;i<k;i++)        //for reversing first k elts
+    {
+        s.push(q.remove());
     }
-    public void reverse(Queue<Integer> q1){
-      
-        if(q1.isEmpty()){
-            return;
-        }
-        
-        int a=q1.poll();
-        reverse(q1);
-        q1.add(a);
+   // 45  321
+    while(s.isEmpty() == false)      //adding the reversed elts back into the Q
+        q.add(s.pop());
+
+    for(int i=0;i<n-k;i++)       
+    {
+        q.add(q.remove());
     }
+    return q;
+    }
+    //321  45
 }
