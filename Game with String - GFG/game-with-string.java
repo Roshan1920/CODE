@@ -21,11 +21,7 @@ class GFG{
 // } Driver Code Ends
 
 
-// User function Template for Java
 
-
-
-// User function Template for Java
 
 class Solution{
     static int minValue(String s, int k){
