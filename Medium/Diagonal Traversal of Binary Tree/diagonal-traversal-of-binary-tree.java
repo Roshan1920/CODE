@@ -109,37 +109,29 @@ class GfG {
 // } Driver Code Ends
 
 
-//User function Template for Java
-
-/* Node is defined as
-class Node{
-    int data;
-    Node left;
-    Node right;
-    Node(int data){
-        this.data = data;
-        left=null;
-        right=null;
-    }
-}*/
-
-
 
 class Tree
 {
      public ArrayList<Integer> diagonal(Node root)
       {
-           //add your code here.
-                   ArrayList<Integer> ans=new ArrayList<>(); 
+        ArrayList<Integer> ans=new ArrayList<>(); 
         Queue<Node> q=new LinkedList<>();
+       
         Node curr=root;
         while(curr!=null) {
+            
             ans.add(curr.data);
-            if(curr.left!=null) q.add(curr.left);
+            
+            if(curr.left!=null) 
+            q.add(curr.left); //   1 4
+    // Left ko simply queue m dalte jayenge initially.   
+          
             if(curr.right==null) {
-                curr=q.poll();
+                curr=q.poll(); // curr=3
             }
+    //Agar right null aa gaya to queue mn ja kar top element ko le lenge
             else curr=curr.right;
+    // Aur aise simply right ko add karte rhenge
         }
         return ans;
       }
