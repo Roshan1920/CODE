@@ -70,31 +70,19 @@ class BinarySearchTree {
 
 // } Driver Code Ends
 
-
 class GFG
 {
     public static boolean isDeadEnd(Node root)
     {
-        int min = Integer.MIN_VALUE;
-        int max = Integer.MAX_VALUE;
-        
-        return func(root,min,max);
+        return solve(root, 1, Integer.MAX_VALUE);
     }
-    
-    public static boolean func(Node root,int min,int max){
-        
-        if(root==null) {
+    static boolean solve(Node root, int min, int max)
+    {
+        if(root==null)
             return false;
-        }
-        
-        if(min==Integer.MIN_VALUE && root.data==1 && (max-root.data)==1) {
+        if(min==max)
             return true;
-        }
-        
-        if((max-root.data)==1 && (root.data - min)==1){
-            return true;
-        }
-        
-        return func(root.left,min,root.data) || func(root.right,root.data,max);
+        return solve(root.left,min,root.data-1)||solve(root.right,root.data+1,max);
+        //update lower on right traversal and vice-versa.
     }
 }
