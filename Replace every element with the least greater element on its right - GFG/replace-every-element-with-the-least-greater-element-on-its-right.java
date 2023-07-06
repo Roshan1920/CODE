@@ -57,26 +57,75 @@ class GFG {
 
 
 class Solution {
-   public ArrayList<Integer> findLeastGreater(int len, int[] arr) {
+    
+    class Node{
+        int data;
+        Node left;
+        Node right;
+        Node(int data){
+            this.data=data;
+        }
+    }
+    Node succ = null;
+    public ArrayList<Integer> findLeastGreater(int len, int[] arr) {
+        // code here
         ArrayList<Integer> ans = new ArrayList<>();
-        
-        TreeSet<Integer> s  = new TreeSet<>();
-        
-         for(int i=len-1;i>=0; i--){
-            s.add(arr[i]);
-            Integer it = s.higher(arr[i]);
-            
-            if(it==null) ans.add(-1);
-            
-            else ans.add(it);
+        Node root = null;
+
+        for(int i=len-1;i>=0; i--){
+            root = bst(root,arr[i]);
+            if(succ!=null){
+                ans.add(succ.data);
+                succ = null;
+            }else{
+                ans.add(-1);
+            }
         }
         
         Collections.reverse(ans);
-        
+
         return ans;
-        
+    }
+    
+    
+    public Node bst(Node root,int data){
+        if(root==null){
+            Node n = new Node(data);
+            return n;
+        }
+        if(data<root.data){
+            succ = root;
+            root.left = bst(root.left,data);
+        }else if(data>=root.data){
+            root.right = bst(root.right,data);
+        }
+
+        return root;
     }
 }
+
+
+// class Solution {
+//   public ArrayList<Integer> findLeastGreater(int len, int[] arr) {
+//         ArrayList<Integer> ans = new ArrayList<>();
+        
+//         TreeSet<Integer> s  = new TreeSet<>();
+        
+//          for(int i=len-1;i>=0; i--){
+//             s.add(arr[i]);
+//             Integer it = s.higher(arr[i]);
+            
+//             if(it==null) ans.add(-1);
+            
+//             else ans.add(it);
+//         }
+        
+//         Collections.reverse(ans);
+        
+//         return ans;
+        
+//     }
+// }
 
 
         
