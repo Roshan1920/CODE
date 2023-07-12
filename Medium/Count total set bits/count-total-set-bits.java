@@ -17,20 +17,24 @@ import java.math.BigInteger;
         }
 
         int x = largestPowerOf2InRange(n);
+        //for values below range2^x
         int btill2x = x * (1 << (x - 1));
+        // 1st bit from remaining
         int msb2xton = n - (1 << x) + 1;
+        // left bits of remaning
         int rest = n - (1 << x);
+        //sum of all bits.
         int ans = btill2x + msb2xton + countSetBits(rest);
         return ans;
     }
-
+//to find largest power of 2 in that range
     public static int largestPowerOf2InRange(int n) {
         int x = 0;
-
+//1<< x = 2 to the power x
         while ((1 << x) <= n) {
             x++;
         }
-
+// eg for n=10 ,2^4 is <=n , so the largest value of x in range is x-1 i.e 3
         return x - 1;
     }
 }
