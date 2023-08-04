@@ -1,5 +1,3 @@
-//Using DP
-
 class Solution {
     public int nthSuperUglyNumber(int n, int[] primes) {
        long dp[] = new long[n+1];
