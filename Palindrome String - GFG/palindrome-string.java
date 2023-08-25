@@ -24,30 +24,11 @@ class GFG {
 
 class Solution {
     int isPalindrome(String S) {
-       int i=0;int j=S.length()-1;
-        while(i<j){
-            if(S.charAt(i)!=S.charAt(j)){
-                return 0;
-            }
-            else{
-                i++;
-                j--;
-            }
+        
+        for(int i=0,j=S.length()-1;i<S.length()/2;i++,j--){
+            if(S.charAt(i)!=S.charAt(j)) 
+            return 0;
         }
         return 1;
     }
 };
-/*
-or
-String rev="";
-        int ans=0;
-        
-        for(int i=S.length()-1;i>=0;i--){
-            rev+=S.charAt(i);
-        }
-        if(S.equals(rev)){
-            ans=1;
-        }
-        return ans;
-        }
-        */
