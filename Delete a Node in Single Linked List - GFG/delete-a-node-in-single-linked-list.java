@@ -88,7 +88,7 @@ class GfG
            x--;
        }
        prev.next = current.next;
-       
+       current= null;
     	   return head;
 
     }
