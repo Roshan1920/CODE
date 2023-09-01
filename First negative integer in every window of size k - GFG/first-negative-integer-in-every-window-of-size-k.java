@@ -40,28 +40,22 @@ class GFG {
 // } Driver Code Ends
 
 
-//User function Template for Java
-
 
 class Compute {
     
     public long[] printFirstNegativeInteger(long A[], int N, int K)
     {
-        Queue<Integer>q=new LinkedList<>();
-        long []ans=new long[N-K+1];
-        
-        for(int i=0;i<N;i++){
-            if(A[i]<0) q.add(i);
+        long[] res =  new long[N-K+1];
+        for(int i =0;i<=N-K;i++){
+            for(int j =i;j<i+K;j++){
+                if(A[j]<0){ res[i] = A[j];
+                break;
+                }
+                else{
+                    res[i] =0;
+                }
+            }
         }
-        
-        for(int i=0;i<N-K+1;i++){
-            if(q.size()>0&&q.peek()<i) q.remove();
-            
-            if(q.size()>0&& q.peek()<=i+K-1) ans[i]=A[q.peek()];
-            else if(q.size()==0) ans[i]=0;
-            else ans[i]=0;
-        }
-        
-        return ans;
+        return res;
     }
 }
