@@ -1,9 +1,19 @@
 class Solution {
     public void reverseString(char[] s) {
-        for(int i=0, j = s.length - 1; i< s.length/2; i++, j--){
-            char tmp = s[i];
-            s[i] = s[j];
-            s[j] = tmp;
+        
+        if(s==null){
+            return ;
+        }
+        int i=0;
+        int j= s.length -1;
+        while(i<j){
+            char a = s[i];
+            s[i]=s[j];
+            s[j]= a;
+            
+            i++;
+            j--;
+                
+        }
         }
     }
-}
