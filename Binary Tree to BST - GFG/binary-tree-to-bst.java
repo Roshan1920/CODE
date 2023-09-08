@@ -100,35 +100,34 @@ class GFG {
 
 // } Driver Code Ends
 
-class Solution
-{
-    void inOrderTra(Node root, Queue<Integer> q, boolean f)
-    {
-        if(root==null)
-        return;
-        inOrderTra(root.left, q, f);
-        if(f)
-        {
-            q.add(root.data);
-        }
-        else
-        {
-            root.data=q.poll();
-        }
-        inOrderTra(root.right, q, f);
+
+//pehle sort kar lete BT ko 
+class Solution{
+    Node binaryTreeToBST(Node root){
+      ArrayList<Integer> arr=new ArrayList<>();
+      inorder(root,arr);
+      Collections.sort(arr);
+      return buildBST(arr,0,arr.size()-1);
     }
-    // The given root is the root of the Binary Tree
-    // Return the root of the generated BST
-    Node binaryTreeToBST(Node root)
-    {
-       Queue<Integer> q= new PriorityQueue<>();
-       inOrderTra(root, q, true);
-       
-       //Collections.sort(q);
-       
-       inOrderTra(root, q, false);
-       return root;
-       
+    
+    //find mid and fill its left and right
+    Node buildBST(ArrayList<Integer> arr,int low,int high){
+        if(low>high) return null;
+        
+        int mid=low+(high-low)/2;
+        Node root=new Node(arr.get(mid));
+        root.left=buildBST(arr,low,mid-1);
+        root.right=buildBST(arr,mid+1,high);
+        return root;
+    }
+    void inorder(Node root,ArrayList<Integer> arr){
+        if(root==null) return;
+        
+        inorder(root.left,arr);
+        arr.add(root.data);
+        inorder(root.right,arr);
     }
 }
+ 
+ 
  
