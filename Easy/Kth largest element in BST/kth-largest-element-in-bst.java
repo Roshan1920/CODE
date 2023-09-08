@@ -97,36 +97,28 @@ class GfG {
 }
 // } Driver Code Ends
 
-class Solution
-{
-    int i =1;    
-    int ans = 0; // return the Kth largest element in the given BST rooted at 'root'
-    public int kthLargest(Node root,int k)
-    {
-        int count=countNode(root);
-        inorder(root, count-k+1);
-        return ans;
-        //Your code here
-    }
-    public static int countNode(Node root){
-        if(root==null) return 0;
-       int left= countNode(root.left);
-       int right=countNode(root.right);
-       return left+right+1;
-    }
-    public void inorder(Node root, int k) {
-        if(root == null) {
-            return;
-        }
+
+
+class Solution {
+    int count = 0; // variable to keep track of the count
+    int result = -1; // variable to store the result
+	void kthLargestUtil(Node root, int k) {
         
-        inorder(root.left, k);
+        if (root == null || count >= k) // base case: if root is null or count is greater than or equal to k
+            return; 
+        kthLargestUtil(root.right, k); // recursively call the function on the right child
         
-        if(i==k){
-            ans = root.data;   
+        count++; // increment the count
+
+        if (count == k) { // if count is equal to k
+            result = root.data; // update the result with the data value of current root
+            return; 
         }
-        i++;       
-        inorder(root.right, k);
-    }
-    
-    
+        kthLargestUtil(root.left, k); // recursively call the function on the left child
+    } 
+  
+    int kthLargest(Node root, int k) { 
+        kthLargestUtil(root, k); // call the utility function to find the kth largest element
+        return result; // return the result
+    } 
 }
