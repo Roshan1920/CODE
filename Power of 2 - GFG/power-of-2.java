@@ -30,18 +30,21 @@ class Driver_class
 // } Driver Code Ends
 
 
-// For any value of n, which can be 2^x  the AND of n and n-1 is always 0.
+//User function Template for Java
 
 class Solution{
     
+    // Function to check if given number n is a power of two.
     public static boolean isPowerofTwo(long n){
+  
+        if(n == 0) return false;
+        if(n == 1) return true;
         
-        if(n==0){
-            return false;
-        }
-    else {
-            return((n&(n-1)) == 0);
-        }
-    }
+        if(n % 2==1) return false;
+        
+        return isPowerofTwo(n/2);
+        
+     }
+    
     
 }
