@@ -28,29 +28,23 @@ class GFG
 	 }
    }
 }
-// } Driver Code Ends
+// } Driver Code 
 
 
 class Solution
 {
-    //Function to find the maximum money the thief can get.
     public int FindMaxSum(int arr[], int n)
-    {
-
-        int inclusive = arr[0];
-        int exclusive = 0;
-
-        for (int i = 1; i < n; i++) {
-            int prevInclusive = inclusive;
-
-            inclusive = Math.max(exclusive + arr[i], inclusive);
-            exclusive = Math.max(prevInclusive, exclusive);
+    { 
+        int sum1=0;
+        int sum2=0;
         
-// The new value of inclusive is the sum of curr house val and the previous exclusive value
-//(as you cannot rob adjacent houses).
-//The new value of exclusive is the maximum of the previous inclusive and exclusive values.
+        for(int i=0;i<n;i++)
+        {
+           int temp = sum1;
+           sum1 = Math.max(sum2+arr[i],sum1);
+           sum2=temp;
         }
-        return Math.max(inclusive, exclusive);
         
+        return sum1 ;
     }
 }
