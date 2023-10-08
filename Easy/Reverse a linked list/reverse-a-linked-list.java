@@ -70,17 +70,16 @@ class Solution
     //Function to reverse a linked list.
     Node reverseList(Node head)
     {
-        // code here
-      
-        Node dummy=null;
-        while(head!=null){
-            Node temp=head.next;
-            head.next=dummy;
-            dummy=head;
-            head=temp;
-        }
-        return dummy;
-
-        
+        //swap by using 1234 convention
+        //temp=1,head.next=2, dummy =3, head =4. Now, do LHS as 1234 and RHS as 2341
+     Node dummy= null;
+     while(head!=null){
+         Node temp = head.next;
+         head.next = dummy;
+         dummy = head;
+         head = temp;
+     }
+     return dummy;
     }
 }
+
