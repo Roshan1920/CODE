@@ -129,23 +129,25 @@ class Node
 
 class Tree
 {
-    int height(Node root){
-        if(root == null) 
-        return 0;
-        return 1 + Math.max(height(root.left), height(root.right));
-    }
-    
-    //Function to check whether a binary tree is balanced or not.
-    boolean isBalanced(Node root)
-    {
-	// Your code here;
-   if(root == null) return true;
-   int lh = height(root.left);
-   int rh = height(root.right);
-   if (Math.abs(lh - rh) <= 1 && isBalanced(root.left)
-            && isBalanced(root.right))
-            return true;
    
-   return false;
- }
+     boolean isBalanced(Node root)
+    {
+	// Your code here
+	    if(check(root)>0) return true;
+	    return false;
+    }
+    int check(Node root){
+        if(root==null) return 0;
+        
+        int l = check(root.left);
+        if(l==-1) return -1;
+        
+        int r = check(root.right);
+        if(r==-1) return -1;
+        
+        if(Math.abs(l-r)>1) return -1;
+        
+        return 1+Math.max(l,r);
+    }
 }
+
